@@ -1,0 +1,5 @@
+var chosenCity = $("#chosenCity")
+var chosenCityTitle = $("#chosenCityTitle")
+var chosenCityTemp = $("#chosenCityTemp")
+var chosenCityWind = $("#chosenCityWind")
+var chosenCityUV = $("#chosenCityUV")
