@@ -17,7 +17,7 @@
 
 <body>
 
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-dark bg-dark">
         <span class="navbar-brand mb-0 h1">Weather Dashboard</span>
     </nav>
 
@@ -25,13 +25,17 @@
         <div class="row">
 
             <div class="col-md-3">
-                <div class="input-group mb-3">
+                <div class="input-group mb-3 mt-3">
                     <input id="cityName" type="text" class="form-control" placeholder="City" aria-label="cityName"
                         aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-outline-primary button-primary" type="button" id="citySubmit"><i
                                 class="fas fa-search"></i></button>
                     </div>
+
+                    <hr>
+
+                    <div class="citiesSaved"></div>
                 </div>
             </div>
 
@@ -39,14 +43,12 @@
                 <div class="chosenCity p-2">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title" id="chosenCityTitle">chosenCityTitle (date) image </h5>
+                            <h5 class="card-title" id="chosenCityTitle"></h5>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item" id="chosenCityTemp">chosenCityTemp</li>
-                            <li class="list-group-item" id="chosenCityHumid">chosenCityHumid</li>
-                            <li class="list-group-item" id="chosenCityWind">chosenCityWind</li>
-                            <li class="list-group-item" id="chosenCityUV">chosenCityUV</li>
-                        </ul>
+                        <p class="ml-4" id="chosenCityTemp"></p>
+                        <p class="ml-4" id="chosenCityHumid"></p>
+                        <p class="ml-4" id="chosenCityWind"></p>
+                        <p class="ml-4" id="UVindexPlaceHolder"><span id="chosenCityUV"></span></p>
                     </div>
                 </div>
 
@@ -54,6 +56,9 @@
 
                 <div class="fiveDayForecast">
                     <h5>5 Day Forecast :</h5>
+                    <div class="row fiveDay" id="fiveDay">
+
+                    </div>
                 </div>
 
             </div>
