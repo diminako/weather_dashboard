@@ -17,14 +17,14 @@
 
 <body>
 
-    <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1">Weather Dashboard</span>
+    <nav class="navbar navbar-dark bg-dark mb-2">
+        <span class="navbar-brand mb-0 h1" id="headerH1">Weather Dashboard</span>
     </nav>
+
 
     <div class="container">
         <div class="row">
-
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="input-group mb-3 mt-3">
                     <input id="cityName" type="text" class="form-control" placeholder="City" aria-label="cityName"
                         aria-describedby="button-addon2">
@@ -33,13 +33,10 @@
                                 class="fas fa-search"></i></button>
                     </div>
 
-                    <hr>
-
                     <div class="citiesSaved"></div>
                 </div>
             </div>
-
-            <div class="col-md-9">
+            <div class="col-md-10">
                 <div class="chosenCity p-2">
                     <div class="card">
                         <div class="card-body">
@@ -48,23 +45,18 @@
                         <p class="ml-4" id="chosenCityTemp"></p>
                         <p class="ml-4" id="chosenCityHumid"></p>
                         <p class="ml-4" id="chosenCityWind"></p>
-                        <p class="ml-4" id="UVindexPlaceHolder"><span id="chosenCityUV"></span></p>
+                        <p class="ml-4" id="UVindexPlaceHolder"></p>
                     </div>
                 </div>
-
                 <hr>
-
                 <div class="fiveDayForecast">
                     <h5>5 Day Forecast :</h5>
                     <div class="row fiveDay" id="fiveDay">
-
                     </div>
                 </div>
 
             </div>
         </div>
-
-
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
