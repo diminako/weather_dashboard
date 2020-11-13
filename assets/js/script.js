@@ -72,6 +72,77 @@ $("#cityName").on("keypress", function (event) {
     }
 });
 
+function localStorageCities() {
+
+}
+
+function fiveDayGen() {
+    for (let i = 0; i < 5; i++) {
+        var fiveDayDiv = $("<div class='col-md-2' id='" + i + "' />")
+        $("#fiveDay").append(fiveDayDiv)
+        $("#" + i).append("<li id='liDate" + i + "' />")
+        $("#" + i).append("<li id='liImg" + i + "' />")
+        $("#" + i).append("<li id='liTemp" + i + "' />")
+        $("#" + i).append("<li id='liHumid" + i + "' />")
+    }
+}
+
+function fillInfiveDay() {
+    chosenCity = $("#cityName").val().split(' ').join('+')
+    var APIkey = "93048a14e536394603a5f5173a41d761"
+    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + chosenCity + "&appid=" + APIkey
+
+    $.ajax({ url: queryURL, method: "GET" }).then(function (forecast) {
+        $("#liDate0").text(forecast.list[0].dt_txt.substring(0, 10))
+
+        $("#liImg0").text(forecast.list[0])
+
+        $("#liTemp0").text(forecast.list[0].main.temp)
+        $("#liHumid0").text(forecast.list[0].main.humidity)
+
+        console.log(forecast)
+    })
+
+    $.ajax({ url: queryURL, method: "GET" }).then(function (forecast) {
+        $("#liDate1").text(forecast.list[7].dt_txt.substring(0, 10))
+
+        $("#liImg1").text(forecast.list[7])
+
+        $("#liTemp1").text(forecast.list[7].main.temp)
+        $("#liHumid1").text(forecast.list[7].main.humidity)
+    })
+
+    $.ajax({ url: queryURL, method: "GET" }).then(function (forecast) {
+        $("#liDate2").text(forecast.list[15].dt_txt.substring(0, 10))
+
+        $("#liImg2").text(forecast.list[15])
+
+        $("#liTemp2").text(forecast.list[15].main.temp)
+        $("#liHumid2").text(forecast.list[15].main.humidity)
+    })
+
+    $.ajax({ url: queryURL, method: "GET" }).then(function (forecast) {
+        $("#liDate3").text(forecast.list[23].dt_txt.substring(0, 10))
+
+        $("#liImg3").text(forecast.list[23])
+
+        $("#liTemp3").text(forecast.list[23].main.temp)
+        $("#liHumid3").text(forecast.list[23].main.humidity)
+    })
+
+    $.ajax({ url: queryURL, method: "GET" }).then(function (forecast) {
+        $("#liDate4").text(forecast.list[31].dt_txt.substring(0, 10))
+
+        $("#liImg4").text(forecast.list[31])
+
+        $("#liTemp4").text(forecast.list[31].main.temp)
+        $("#liHumid4").text(forecast.list[31].main.humidity)
+    })
+}
+
+
+//  create 5 col-md-1 divs inside 5 day forecast
+
 //  Button saving
 
 //  outputting to chosen city
@@ -79,53 +150,4 @@ $("#cityName").on("keypress", function (event) {
 //  List of cities on local storage
 
 //  create the chosen city card when an input is put in
-function localStorageCities() {
-
-}
-
-//  generate 5 cards for 5 day forecast
-function fiveDayGen() {
-    for (let i = 0; i < 5; i++) {
-        var fiveDayDiv = $("<div class='col-md-2' id='" + i + "' />")
-        $("#fiveDay").append(fiveDayDiv)
-        $("#" + i).append("<li id='li'" + i + "/>")
-        $("#" + i).append("<li id='li'" + i + "/>")
-        $("#" + i).append("<li id='li'" + i + "/>")
-        $("#" + i).append("<li id='li'" + i + "/>")
-
-        chosenCity = $("#cityName").val().split(' ').join('+')
-        var APIkey = "93048a14e536394603a5f5173a41d761"
-        var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + chosenCity + "&appid=" + APIkey
-
-        $.ajax({ url: queryURL, method: "GET" }).then(function (forecastResponse) {
-
-
-            $("#" + i).text(forecastResponse.list[i].dt_txt)
-            $("#" + i).text(forecastResponse.list[i])
-            $("#" + i).text(forecastResponse.list[i].main.temp)
-            $("#" + i).text(forecastResponse.list[i])
-        })
-    }
-}
-
-
-function fillInfiveDay() {
-    chosenCity = $("#cityName").val().split(' ').join('+')
-    var APIkey = "93048a14e536394603a5f5173a41d761"
-    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + chosenCity + "&appid=" + APIkey
-
-    for (let i = 0; i < 5; i++) {
-        $.ajax({ url: queryURL, method: "GET" }).then(function (forecast) {
-
-            $("#" + i).text(forecast.list[i].dt_txt)
-            $("#" + i).text(forecast.list[i])
-            $("#" + i).text(forecast.list[i].main.temp)
-            $("#" + i).text(forecast.list[i])
-
-
-        })
-    }
-}
-//  create 5 col-md-1 divs inside 5 day forecast
-
 // fiveDayGen()
