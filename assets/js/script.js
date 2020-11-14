@@ -54,13 +54,6 @@ function ajaxRetrieval(chosenCity) {
     fillInfiveDay(chosenCity)
 }
 
-$("#citySubmit").on("submit", function (event) {
-    event.preventDefault();
-    var chosenCity = $("#cityName").val().trim()
-    console.log(chosenCity)
-    cityList.push(chosenCity)
-    renderList()
-})
 
 function fillInfiveDay(chosenCity) {
     var APIkey = "93048a14e536394603a5f5173a41d761"
@@ -89,6 +82,22 @@ function fillInfiveDay(chosenCity) {
     })
 }
 
+$("#citySubmit").on("submit", function (event) {
+    event.preventDefault();
+    var chosenCity = $("#cityName").val().trim()
+
+
+
+
+    cityList.push(chosenCity)
+    localStorage.setItem("City", chosenCity)
+
+
+    renderList()
+})
+
+
+
 function renderList() {
     $(".citiesSaved").empty()
     for (let i = 0; i < cityList.length; i++) {
@@ -103,10 +112,21 @@ function renderList() {
     ajaxRetrieval(encodeURIComponent(cityList[cityList.length - 1]))
 }
 
+
+
 $(document).on("click", ".cityName", function () {
     ajaxRetrieval(encodeURIComponent($(this).attr("data-city")))
+
+    cityList.push(chosenCity)
+    localStorage.setItem("City", $(this).attr("data-city"))
+
 })
 
-function localStorageCities(chosenCity) {
-
+function init() {
+    if (localStorage) {
+        localStorage.getItem("City")
+        ajaxRetrieval(localStorage.getItem("City"))
+    }
 }
+
+init()
