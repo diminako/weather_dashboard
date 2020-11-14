@@ -12,7 +12,7 @@ var APIkey = "93048a14e536394603a5f5173a41d761"
 
 //  Current weather information
 function ajaxRetrieval(chosenCity) {
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + chosenCity + "&appid=" + APIkey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + chosenCity + "&appid=" + APIkey;
 
     $.ajax({ url: queryURL, method: "GET" }).then(function (response) {
         var temp = ((response.main.temp) - 273.15) * 1.8 + 32
@@ -21,7 +21,7 @@ function ajaxRetrieval(chosenCity) {
 
         console.log(response.weather[0].icon)
 
-        var imageURL = "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png"
+        var imageURL = "https://openweathermap.org/img/wn/" + response.weather[0].icon + ".png"
         var image = $("<img src='" + imageURL + "'>")
 
         chosenCityTitle.html(response.name + "  -  " + moment().format("MMM Do YYYY") + "  -  ")
@@ -31,7 +31,7 @@ function ajaxRetrieval(chosenCity) {
         chosenCityWind.text("Wind speed: " + response.wind.speed + " mph")
         UVindexPlaceHolder.html("UV Index: <span id='chosenCityUV'></span>")
 
-        var UVIndexURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + long + "&appid=" + APIkey;
+        var UVIndexURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + long + "&appid=" + APIkey;
 
         $.ajax({ url: UVIndexURL, method: "GET" }).then(function (newResponse) {
             var chosenCityUV = $("#chosenCityUV")
@@ -57,7 +57,7 @@ function ajaxRetrieval(chosenCity) {
 
 function fillInfiveDay(chosenCity) {
     var APIkey = "93048a14e536394603a5f5173a41d761"
-    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + chosenCity + "&units=imperial&appid=" + APIkey
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + chosenCity + "&units=imperial&appid=" + APIkey
 
     $.ajax({ url: queryURL, method: "GET" }).then(function (forecast) {
         console.log(forecast)
@@ -70,7 +70,7 @@ function fillInfiveDay(chosenCity) {
                 col.addClass("bg-primary card mr-1")
                 var date = $("<div>").text(thisWeather.dt_txt.substring(0, 10))
 
-                var weather = $("<img>").attr("src", `http://openweathermap.org/img/wn/${thisWeather.weather[0].icon}.png`)
+                var weather = $("<img>").attr("src", `https://openweathermap.org/img/wn/${thisWeather.weather[0].icon}.png`)
                 weather.attr("width", "50")
                 var temp = $("<div>").text("Temp: " + thisWeather.main.temp + "℉")
                 var humid = $("<div>").text("Humidity: " + thisWeather.main.humidity)
@@ -96,8 +96,6 @@ $("#citySubmit").on("submit", function (event) {
     renderList()
 })
 
-
-
 function renderList() {
     $(".citiesSaved").empty()
     for (let i = 0; i < cityList.length; i++) {
@@ -111,8 +109,6 @@ function renderList() {
     }
     ajaxRetrieval(encodeURIComponent(cityList[cityList.length - 1]))
 }
-
-
 
 $(document).on("click", ".cityName", function () {
     ajaxRetrieval(encodeURIComponent($(this).attr("data-city")))
