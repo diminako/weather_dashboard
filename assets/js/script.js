@@ -119,7 +119,7 @@ $(document).on("click", ".cityName", function () {
 })
 
 function init() {
-    if (localStorage) {
+    if (!localStorage) {
         localStorage.getItem("City")
         ajaxRetrieval(localStorage.getItem("City"))
     }
