@@ -18,3 +18,7 @@
     font-weight: 500;
     color: white;
 }
+
+.hidden {
+    display:none;
+}

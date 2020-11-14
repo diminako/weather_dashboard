@@ -1,12 +1,13 @@
 
 
-// var chosenCity = $("#chosenCity")
+var chosenCity = $("#chosenCity")
 var chosenCityTitle = $("#chosenCityTitle")
 var chosenCityTemp = $("#chosenCityTemp")
 var chosenCityHumid = $("#chosenCityHumid")
 var chosenCityWind = $("#chosenCityWind")
 var chosenCityUV = $("span")
 var UVindexPlaceHolder = $("#UVindexPlaceHolder")
+var hidden = $(".hidden")
 var cityList = []
 var APIkey = "93048a14e536394603a5f5173a41d761"
 
@@ -19,7 +20,6 @@ function ajaxRetrieval(chosenCity) {
         var long = parseInt(response.coord.lon)
         var lat = parseInt(response.coord.lat)
 
-        console.log(response.weather[0].icon)
 
         var imageURL = "https://openweathermap.org/img/wn/" + response.weather[0].icon + ".png"
         var image = $("<img src='" + imageURL + "'>")
@@ -83,7 +83,7 @@ function fillInfiveDay(chosenCity) {
 $("#citySubmit").on("submit", function (event) {
     event.preventDefault();
     var chosenCity = $("#cityName").val().trim()
-
+    hidden.removeClass("hidden")
 
 
 
@@ -109,7 +109,6 @@ function renderList() {
 
 $(document).on("click", ".cityName", function () {
     ajaxRetrieval(encodeURIComponent($(this).attr("data-city")))
-
     cityList.push(chosenCity)
     localStorage.setItem("City", $(this).attr("data-city"))
 
@@ -119,6 +118,8 @@ function init() {
     if (!localStorage.getItem("City")) {
         return
     }
+    hidden.removeClass("hidden")
     ajaxRetrieval(localStorage.getItem("City"))
+
 }
 init()
