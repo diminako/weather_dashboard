@@ -17,24 +17,24 @@
 
 <body>
 
-    <nav class="navbar navbar-dark bg-dark mb-2">
-        <span class="navbar-brand mb-0 h1" id="headerH1">Weather Dashboard</span>
+    <nav class="navbar navbar-dark bg-dark mb-2 d-flex justify-content-center">
+        <h1 class="mb-0 h1" id="headerH1">Weather Dashboard</h1>
     </nav>
 
 
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <div class="input-group mb-3 mt-3">
+                <form class="input-group mb-3 mt-3" id="citySubmit">
                     <input id="cityName" type="text" class="form-control" placeholder="City" aria-label="cityName"
                         aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-primary button-primary" type="button" id="citySubmit"><i
+                        <button class="btn btn-outline-primary button-primary" type="submit"><i
                                 class="fas fa-search"></i></button>
                     </div>
 
-                    <div class="citiesSaved"></div>
-                </div>
+                </form>
+                <div class="citiesSaved"></div>
             </div>
             <div class="col-md-10">
                 <div class="chosenCity p-2">

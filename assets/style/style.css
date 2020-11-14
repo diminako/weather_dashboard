@@ -9,5 +9,12 @@
 }
 
 #headerH1 {
-    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+}
+
+#fiveDay {
+    font-weight: 500;
+    color: white;
 }
