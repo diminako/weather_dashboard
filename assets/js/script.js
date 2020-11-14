@@ -1,6 +1,6 @@
 
 
-var chosenCity = $("#chosenCity")
+// var chosenCity = $("#chosenCity")
 var chosenCityTitle = $("#chosenCityTitle")
 var chosenCityTemp = $("#chosenCityTemp")
 var chosenCityHumid = $("#chosenCityHumid")
@@ -60,12 +60,10 @@ function fillInfiveDay(chosenCity) {
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + chosenCity + "&units=imperial&appid=" + APIkey
 
     $.ajax({ url: queryURL, method: "GET" }).then(function (forecast) {
-        console.log(forecast)
         $("#fiveDay").empty()
         for (let i = 0; i < forecast.list.length; i++) {
             var thisWeather = forecast.list[i]
             if (thisWeather.dt_txt.split(" ")[1] === "15:00:00") {
-                console.log(thisWeather)
                 var col = $("<div class='col-md-2'>")
                 col.addClass("bg-primary card mr-1")
                 var date = $("<div>").text(thisWeather.dt_txt.substring(0, 10))
@@ -99,7 +97,6 @@ $("#citySubmit").on("submit", function (event) {
 function renderList() {
     $(".citiesSaved").empty()
     for (let i = 0; i < cityList.length; i++) {
-        console.log("render")
         var pastCity = $("<button>").text(cityList[i])
         pastCity.attr("data-city", cityList[i])
 
@@ -119,10 +116,9 @@ $(document).on("click", ".cityName", function () {
 })
 
 function init() {
-    if (!localStorage) {
-        localStorage.getItem("City")
-        ajaxRetrieval(localStorage.getItem("City"))
+    if (!localStorage.getItem("City")) {
+        return
     }
+    ajaxRetrieval(localStorage.getItem("City"))
 }
-
 init()
