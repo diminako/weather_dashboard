@@ -7,7 +7,7 @@ the logic of the page aftr psuedocoding it out for myself.  I took each directio
  order to help me determine my plan of attack for the Weather Dashboard
 
 ## Link to Webpage
-[Word Day Planner](https://diminako.github.io/weather_dashboard/)
+[Weather Dashboard!](https://diminako.github.io/weather_dashboard/)
 
 ## Purpose
 
